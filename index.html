@@ -6,215 +6,109 @@
   <title>Martin Björck — Tryckare & Fotograf</title>
   <meta name="description" content="Martin Björck — professionell tryckare sedan 1990 och fotograf. Portfolio, CV och kontakt." />
   <style>
-    /* Snyggare grid */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 12px;
+:root{
+  --bg: #f3f4f6;
+  --panel: #e5e7eb;
+  --muted: #6b7280;
+  --text: #111827;
+  --accent: #9ca3af;
+  --card-shadow: 0 8px 28px rgba(17,24,39,0.06);
+  --max-width: 1400px;
 }
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
 
-.portfolio-grid img {
-  width: 100%;
-  height: 280px;   /* större höjd */
-  object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid #e6e6e6;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
+/* Container */
+.container{max-width:var(--max-width);width:calc(100% - 48px);margin:20px auto;padding:24px}
 
+/* Header */
+header{display:flex;gap:24px;align-items:center;margin-bottom:6px}
+.avatar{width:120px;height:120px;border-radius:14px;overflow:hidden;border:1px solid #e6e6e6;background:linear-gradient(180deg,#fff 0%,var(--panel) 100%);flex:0 0 120px}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.title{flex:1}
+h1{margin:0;font-size:28px}
+p.lead{margin:6px 0 0;color:var(--muted);font-size:15px}
+nav{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:8px 12px;border-radius:8px;background:#fff;border:1px solid #dde2e6;box-shadow:var(--card-shadow);cursor:pointer;font-size:14px}
 
-/* Hover-effekt */
-.portfolio-grid img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  cursor: pointer;
-}
+/* Layout */
+main{margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+.card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--card-shadow);border:1px solid #eee}
+.section-title{font-weight:600;margin:0 0 8px}
 
-    .download-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #0074D9;
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 15px;
-}
+/* Skills */
+.skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.chip{background:var(--panel);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
 
-.download-btn:hover {
-  background: #005fa3;
-}
+/* Portfolio grid */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
+.portfolio-grid a{display:block;border-radius:10px;overflow:hidden;border:1px solid #e6e6e6;background:#fafafa}
+.portfolio-grid img{width:100%;height:280px;object-fit:cover;display:block;transition:transform .18s ease,box-shadow .18s ease}
+.portfolio-grid a:hover img{transform:scale(1.03);box-shadow:0 10px 30px rgba(0,0,0,0.12);cursor:pointer}
 
-    :root{
-      --bg:#f3f4f6;
-      --panel:#e5e7eb;
-      --muted:#6b7280;
-      --text:#111827;
-      --accent:#9ca3af;
-      --card-shadow: 0 6px 18px rgba(17,24,39,0.06);
-    }
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:var(--bg);color:var(--text);}    a{color:inherit;text-decoration:none}
-    .container{
-  max-width:1400px;   /* större maxbredd för stora skärmar */
-  width:100%;
-  margin:24px auto;
-  padding:28px;
-}
-  /* Header: större avatar och bättre utnyttjad yta */
-header{display:flex;gap:28px;align-items:center}
-.avatar{width:140px;height:140px;border-radius:14px;overflow:hidden;border:1px solid #e6e6e6}
+/* Icon buttons (rounded + colored) */
+.icon-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:0;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:transform .15s ease,box-shadow .15s ease;text-decoration:none}
+.icon-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+.icon-btn svg{width:20px;height:20px;display:block;fill:#fff}
 
-/* Gör titeln lite större på desktop */
-.title h1{font-size:28px}
-p.lead{font-size:15px}
+/* Colored backgrounds */
+.icon-youtube{background:#FF0000}
+.icon-instagram{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.icon-linkedin{background:#0A66C2}
+.icon-photos{background:#34A853}
+.icon-mail{background:#6b7280}
 
-    .avatar{width:96px;height:96px;border-radius:12px;background:linear-gradient(180deg,#fff 0%,var(--panel) 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #ddd}
-    .title{flex:1}
-    h1{margin:0;font-size:24px}
-    p.lead{margin:6px 0 0;color:var(--muted)}
-    nav{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:8px 12px;border-radius:8px;background:#fff;border:1px solid #dde2e6;box-shadow:var(--card-shadow);cursor:pointer}
-    main{margin-top:24px}
-   .grid{display:grid;grid-template-columns:1fr 360px;gap:28px}
-    .card{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--card-shadow);border:1px solid #eee}
-    .section-title{font-weight:600;margin:0 0 8px}
-    .skills{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{background:var(--panel);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
-    .portfolio-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolumner på desktop */
-  gap:16px;
-}
-.portfolio-grid img{
-  width:100%;
-  height:220px;            /* högre för större visning */
-  object-fit:cover;
-  border-radius:8px;
-  border:2px solid #e6e6e6;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
+/* footer label */
+.icon-row-label{margin-top:6px;color:var(--muted);font-size:13px}
 
-/* Små hover-förbättringar */
-.portfolio-grid img:hover{ transform:scale(1.02); box-shadow:0 8px 26px rgba(0,0,0,0.12); }
+/* CV download */
+.download-btn{display:inline-block;padding:12px 20px;background:#0074D9;color:#fff;font-weight:600;border-radius:6px;text-decoration:none}
+.download-btn:hover{background:#005fa3}
 
-    .social{display:flex;flex-direction:column;gap:8px}
-    footer{margin-top:24px;color:var(--muted);font-size:13px}
-   /* Behåll bra layout för mindre skärmar */
-@media (max-width:1200px){
-  .container{padding:20px; max-width:980px;}
-  .avatar{width:110px;height:110px}
+/* lightbox overlay */
+#lightboxOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;z-index:9999}
+#lightboxOverlay img{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+
+/* Responsive */
+@media (max-width:1100px){
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .grid{grid-template-columns:1fr 320px}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .portfolio-grid img{height:160px}
+  .avatar{width:110px;height:110px;flex:0 0 110px}
+  .portfolio-grid img{height:220px}
+}
+@media (max-width:720px){
+  .container{padding:12px;width:calc(100% - 24px)}
+  header{align-items:center;gap:12px}
+  .grid{grid-template-columns:1fr}
+  .avatar{width:76px;height:76px;flex:0 0 76px}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .portfolio-grid img{height:140px}
+  .btn{font-size:13px;padding:7px 10px}
+  h1{font-size:20px}
 }
 
-/* Mobilt beteende */
-@media (max-width:880px){
-  .container{margin:12px;padding:12px}
-  header{gap:12px}
-  .avatar{width:76px;height:76px}
-  .grid{grid-template-columns:1fr}
-  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-  .portfolio-grid img{height:110px}
-}
+/* small utilities */
+.text-muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
   </style>
 </head>
-/* Icon button group */
-.icon-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.icon-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;
-  height:44px;
-  border-radius:10px;
-  background:#fff;
-  border:1px solid #e6e6e6;
-  box-shadow:0 6px 18px rgba(17,24,39,0.04);
-  transition:transform .12s ease, box-shadow .12s ease;
-  text-decoration:none;
-}
-.icon-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 30px rgba(17,24,39,0.08);
-}
-.icon-btn svg{
-  width:20px;
-  height:20px;
-  display:block;
-  fill:#374151;
-}
-
-  
-  /* Icon button group */
-.icon-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.icon-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;height:44px;
-  border-radius:10px;
-  background:#fff;
-  border:1px solid #e6e6e6;
-  box-shadow: 0 6px 18px rgba(17,24,39,0.04);
-  transition:transform .12s ease, box-shadow .12s ease;
-  text-decoration:none;
-}
-.icon-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(17,24,39,0.08); }
-.icon-btn svg{width:20px;height:20px;display:block;fill:#374151} /* mörkgrå */
-.icon-label{font-size:13px;color:var(--muted);margin-left:8px}
-
-  <!-- LIGHTBOX -->
-<!-- LIGHTBOX overlay -->
-<div id="lightboxOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;z-index:9999">
-  <img id="lightboxImg" src="" style="max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6)" alt="">
-</div>
-
-<script>
-  const overlay = document.getElementById('lightboxOverlay');
-  const lbImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('.lightbox').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      lbImg.src = link.href;
-      overlay.style.display = 'flex';
-    });
-  });
-  overlay.addEventListener('click', () => { overlay.style.display = 'none'; lbImg.src = ''; });
-</script>
-
-<script>
-  // öppna
-  document.querySelectorAll('.lightbox').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById('lightboxImg').src = link.href;
-      document.getElementById('lightboxOverlay').style.display = 'flex';
-    });
-  });
-
-  // stäng vid klick
-  document.getElementById('lightboxOverlay').addEventListener('click', () => {
-    document.getElementById('lightboxOverlay').style.display = 'none';
-  });
-</script>
-
 <body>
+  <!-- Lightbox overlay -->
+  <div id="lightboxOverlay"><img id="lightboxImg" src="" alt=""></div>
+
   <div class="container">
     <header>
       <div class="avatar">
-  <img id="avatarImg" src="profil.jpg" alt="Profilbild" style="width:100%;height:100%;object-fit:cover">
-
-
+        <!-- profil.jpg eller images/profilbild.jpg beroende på var du lagt den -->
+        <img id="avatarImg" src="profil.jpg" alt="Profilbild" onerror="this.src='images/profil.jpg'">
       </div>
+
       <div class="title">
         <h1>Martin Björck</h1>
-        <p class="lead">Tryckare sedan 1990 • Fotograf • Plats: Helsingborg</p>
+        <p class="lead">Tryckare sedan 1990 • Fotograf • Åstorp / Helsingborg</p>
+
         <nav>
           <a class="btn" href="#om">Om</a>
           <a class="btn" href="#portfolio">Portfolio</a>
@@ -229,57 +123,45 @@ p.lead{font-size:15px}
         <div>
           <section id="om" class="card">
             <h2 class="section-title">Om mig</h2>
-            <p>Jag är professionell tryckare sedan 1990 med gedigen erfarenhet av avancerad tryckteknik och maskinhantering. Vid sidan om jobbet har jag fotografering och cykling som mina stora intressen.</p>
-            <div style="margin-top:12px">
-              <h3 class="section-title">Kompetenser</h3>
-              <div class="skills">
-                <span class="chip">Offset & digitaltryck</span>
-                <span class="chip">Färgstyrning</span>
-                <span class="chip">Maskinunderhåll</span>
-                <span class="chip">Gimp</span>
-                <span class="chip">Fotografering & bildredigering</span>
-                <span class="chip">5S & kvalitet</span>
-              </div>
+            <p>Jag är professionell tryckare sedan 1990 med gedigen erfarenhet av avancerad tryckteknik och maskinhantering. Vid sidan om jobbet arbetar jag med fotografering — dokumentation, porträtt och produktbilder.</p>
+
+            <div class="skills">
+              <span class="chip">Offset & digitaltryck</span>
+              <span class="chip">Färgstyrning</span>
+              <span class="chip">Maskinunderhåll</span>
+              <span class="chip">Adobe / Gimp</span>
+              <span class="chip">Fotografering & mörkrum</span>
+              <span class="chip">5S & kvalitet</span>
             </div>
           </section>
 
-       <section id="portfolio" class="card" style="margin-top:16px">
-  <h2 class="section-title">Portfolio — utrustning & tryckpressar</h2>
+          <section id="portfolio" class="card" style="margin-top:16px">
+            <h2 class="section-title">Portfolio — utrustning & tryckpressar</h2>
 
-  <p class="lead" style="margin-top:10px; font-size:15px; color:#555;">
-    Vågsurfing i Sverige – mina natur- och actionbilder.
-  </p>
+            <p class="lead" style="margin-top:10px; font-size:15px; color:#555;">
+              Vågsurfing i Sverige – mina natur- och actionbilder.
+            </p>
 
-  <a class="btn" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" 
-     target="_blank" 
-     style="margin-bottom:10px; display:inline-block;">
-    📸 Öppna fotoalbumet (Google Photos)
-  </a>
+            <a class="btn" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" style="margin-bottom:10px; display:inline-block;">
+              📸 Öppna fotoalbumet (Google Photos)
+            </a>
 
-  <p class="lead">Inkjeten och några maskiner jag arbetade med under 1995–2022.Klicka på bilden för att förstora</p>
+            <p class="lead" style="margin-top:8px">Inkjeten och några maskiner jag arbetade med under 1995–2022. Klicka på en bild för att förstora.</p>
 
-  <div class="portfolio-grid">
-    <a href="images/cmyk.jpg" class="lightbox"><img src="images/cmyk.jpg" alt="Foto 1"></a>
-    <a href="images/inkjet.jpg" class="lightbox"><img src="images/inkjet.jpg" alt="Foto 2"></a>
-    <a href="images/maskin.jpg" class="lightbox"><img src="images/maskin.jpg" alt="Foto 3"></a>
-    <a href="images/maskin2.jpg" class="lightbox"><img src="images/maskin2.jpg" alt="Foto 4"></a>
-    <a href="images/pharma.jpg" class="lightbox"><img src="images/pharma.jpg" alt="Foto 5"></a>
-    <a href="images/farg.jpg" class="lightbox"><img src="images/farg.jpg" alt="Foto 6"></a>
-  </div>
-</section>
-
-
-             
-
+            <div class="portfolio-grid" id="portfolioGrid">
+              <a href="images/cmyk.jpg" class="lightbox"><img src="images/cmyk.jpg" alt="Foto 1"></a>
+              <a href="images/inkjet.jpg" class="lightbox"><img src="images/inkjet.jpg" alt="Foto 2"></a>
+              <a href="images/maskin.jpg" class="lightbox"><img src="images/maskin.jpg" alt="Foto 3"></a>
+              <a href="images/maskin2.jpg" class="lightbox"><img src="images/maskin2.jpg" alt="Foto 4"></a>
+              <a href="images/pharma.jpg" class="lightbox"><img src="images/pharma.jpg" alt="Foto 5"></a>
+              <a href="images/farg.jpg" class="lightbox"><img src="images/farg.jpg" alt="Foto 6"></a>
+            </div>
           </section>
 
           <section id="cv" class="card" style="margin-top:16px">
             <h2 class="section-title">CV</h2>
-           <a class="btn" href="files/martin-bjorck-cv.pdf" target="_blank">Öppna mitt CV</a>
-             <a href="files/martin-bjorck-cv.pdf" download class="download-btn">
-    Ladda ner CV
-  </a>
-</section>
+            <a class="btn" href="files/martin-bjorck-cv.pdf" target="_blank">Öppna mitt CV</a>
+            <a class="download-btn" href="files/martin-bjorck-cv.pdf" download> Ladda ner CV</a>
 
             <ul style="margin-top:12px;color:var(--muted);font-size:14px">
               <li>Tryckare sedan 1990</li>
@@ -287,109 +169,61 @@ p.lead{font-size:15px}
               <li>Fotograf — Landskap och produkt</li>
             </ul>
           </section>
+
           <section id="fototjanster" class="card" style="margin-top:16px">
-  <h2 class="section-title">Anlita mig som fotograf</h2>
+            <h2 class="section-title">Anlita mig som fotograf</h2>
 
-  <p class="lead">
-    Behöver du bilder till ett projekt, företag, sociala medier eller privat?
-    Jag erbjuder flexibel och prisvärd fotografering i Helsingborg och Skåne.
-  </p>
+            <p class="lead">Behöver du bilder till ett projekt, företag, sociala medier eller privat? Jag erbjuder flexibel och prisvärd fotografering i Helsingborg och Skåne.</p>
 
-  <div style="margin-top:12px; line-height:1.6;">
-    <h3 class="section-title">Jag fotograferar med:</h3>
-    <ul style="color:var(--muted); font-size:15px; padding-left:18px;">
-      <li>📸 Digital kamera – hög upplösning</li>
-      <li>🎞 Analog film – endast svartvit film</li>
-      <li>🛠 Egen framkallning av svartvit film</li>
-      <li>🖼 Traditionella mörkrumsförstoringar (äkta fotografiska kopior)</li>
-    </ul>
+            <div style="margin-top:12px; line-height:1.6;">
+              <h3 class="section-title">Jag fotograferar med:</h3>
+              <ul style="color:var(--muted); font-size:15px; padding-left:18px;">
+                <li>📸 Digital kamera – hög upplösning</li>
+                <li>🎞 Analog film – endast svartvit film</li>
+                <li>🛠 Egen framkallning av svartvit film</li>
+                <li>🖼 Traditionella mörkrumsförstoringar (äkta fotografiska kopior)</li>
+              </ul>
 
-    <h3 class="section-title" style="margin-top:16px;">Jag kan hjälpa dig med:</h3>
-    <ul style="color:var(--muted); font-size:15px; padding-left:18px;">
-      <li>💼 Porträtt – professionella eller personliga</li>
-      <li>🏭 Dokumentation av maskiner & produktion</li>
-      <li>🛠 Produktfoto – små och stora objekt</li>
-      <li>🏙 Miljöbilder & arbetsplatsfoto</li>
-      <li>🌅 Landskap & natur</li>
-    </ul>
-  </div>
+              <h3 class="section-title" style="margin-top:12px">Jag kan hjälpa dig med:</h3>
+              <ul style="color:var(--muted); font-size:15px; padding-left:18px;">
+                <li>💼 Porträtt – professionella eller personliga</li>
+                <li>🏭 Dokumentation av maskiner & produktion</li>
+                <li>🛠 Produktfoto – små och stora objekt</li>
+                <li>🏙 Miljöbilder & arbetsplatsfoto</li>
+                <li>🌅 Landskap & natur</li>
+              </ul>
+            </div>
 
-  <div style="margin-top:16px;">
-    <!-- Kontaktknapp med trygg fallback -->
-<a class="btn" id="contactBtn" href="mailto:martinbjk@gmail.com">
-  Kontakta mig för fotografering
-</a>
+            <div style="margin-top:16px;">
+              <!-- Kontaktknapp med fallback -->
+              <a class="btn" id="contactBtn" href="mailto:martinbjk@gmail.com">Kontakta mig för fotografering</a>
+            </div>
 
-<script>
-  (function(){
-    const btn = document.getElementById('contactBtn');
-    const mail = 'martinbjk@gmail.com';
-    const subject = encodeURIComponent('Förfrågan om fotografering');
-    const body = encodeURIComponent('Hej Martin,Jag är intresserad av fotografering...');
+            <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px">
+              <div class="icon-row" aria-label="Sociala länkar">
+                <a class="icon-btn icon-youtube" href="https://www.youtube.com/@martinSWE" target="_blank" title="YouTube" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.6.4c-.4 0-1.4.1-2.2 1C.6 4.6.4 6.2.4 6.2S0 8.1 0 10v4c0 1.9.4 3.8.4 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.1.4 7.1.4s4.9 0 8.6-.4c.4 0 1.4-.1 2.2-1 .6-.7.8-2.3.8-2.3s.4-1.9.4-3.8v-4c0-1.9-.4-3.8-.4-3.8zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/></svg>
+                </a>
 
-    // För säkerhets skull: om användaren klickar, försök mailto, och efter 700ms öppna Gmail som fallback.
-    btn.addEventListener('click', function(e){
-      // standard: följa href mailto
-      // Vi växlar till mailto först:
-      window.location.href = 'mailto:' + mail + '?subject=' + subject + '&body=' + body;
+                <a class="icon-btn icon-instagram" href="https://www.instagram.com/martinbjorck/" target="_blank" title="Instagram" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1a4.9 4.9 0 1 0 .001 9.801A4.9 4.9 0 0 0 12 8.1zm6.5-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 10.3a1.7 1.7 0 1 1 0 3.401A1.7 1.7 0 0 1 12 10.3z"/></svg>
+                </a>
 
-      // Fallback: öppna Gmail i nytt fönster efter kort fördröjning om mailto inte hanteras.
-      // (Användaren får då en extra flik med Gmail compose — bättre än inget.)
-      setTimeout(function(){
-        // Kontroll: bara öppna fallback i desktop (inte mobil)
-        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-        if (!isMobile) {
-          window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + mail + '&su=' + subject + '&body=' + body, '_blank');
-        }
-      }, 700);
-    });
-  })();
-</script>
+                <a class="icon-btn icon-linkedin" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.7v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.8 2.6 4.8 6v7H16v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg>
+                </a>
 
+                <a class="icon-btn icon-photos" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" title="Google Photos" aria-label="Google Photos">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.1l1.6 1.6A4 4 0 0 0 17 9h3.9v.1L19.3 11A4 4 0 0 0 15.9 15l1.6 1.6V20H12v-3.5L10.4 16A4 4 0 0 0 7 11.9L5.4 10H3v-.1L5.4 8A4 4 0 0 0 10.4 4.6L12 3.1z"/></svg>
+                </a>
 
+                <a class="icon-btn icon-mail" href="mailto:martinbjk@gmail.com" title="E-post" aria-label="E-post">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+              </div>
 
-          <div style="display:flex;flex-direction:column;gap:8px">
-  <div class="icon-row" aria-label="Sociala länkar">
-    <!-- YouTube -->
-    <a class="icon-btn" href="https://www.youtube.com/@martinSWE" target="_blank" title="YouTube — Martin" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.6.4c-.4 0-1.4.1-2.2 1C.6 4.6.4 6.2.4 6.2S0 8.1 0 10v4c0 1.9.4 3.8.4 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.1.4 7.1.4s4.9 0 8.6-.4c.4 0 1.4-.1 2.2-1 .6-.7.8-2.3.8-2.3s.4-1.9.4-3.8v-4c0-1.9-.4-3.8-.4-3.8zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/>
-      </svg>
-    </a>
-
-    <!-- Instagram -->
-    <a class="icon-btn" href="https://www.instagram.com/martinbjorck/" target="_blank" title="Instagram — Martin" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1a4.9 4.9 0 1 0 .001 9.801A4.9 4.9 0 0 0 12 8.1zm6.5-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 10.3a1.7 1.7 0 1 1 0 3.401A1.7 1.7 0 0 1 12 10.3z"/>
-      </svg>
-    </a>
-
-    <!-- LinkedIn -->
-    <a class="icon-btn" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" title="LinkedIn — Martin" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.7v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.8 2.6 4.8 6v7H16v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/>
-      </svg>
-    </a>
-
-    <!-- Google Photos -->
-    <a class="icon-btn" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" title="Google Photos" aria-label="Google Photos">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 3.1l1.6 1.6A4 4 0 0 0 17 9h3.9v.1L19.3 11A4 4 0 0 0 15.9 15l1.6 1.6V20H12v-3.5L10.4 16A4 4 0 0 0 7 11.9L5.4 10H3v-.1L5.4 8A4 4 0 0 0 10.4 4.6L12 3.1z"/>
-      </svg>
-    </a>
-
-    <!-- Mail -->
-    <a class="icon-btn" href="mailto:martinbjk@gmail.com" title="E-post" aria-label="E-post">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Valfri textlabel under ikonerna -->
-  <div style="margin-top:6px; color:var(--muted); font-size:13px;">YouTube · Instagram · LinkedIn · Google Photos · E-post</div>
-</div>
-
+              <div class="icon-row-label">YouTube · Instagram · LinkedIn · Google Photos · E-post</div>
+            </div>
           </section>
         </div>
 
@@ -408,14 +242,73 @@ p.lead{font-size:15px}
       <footer>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
           <div style="color:var(--muted)">© <span id="year"></span> Martin Björck</div>
-          <div style="color:var(--muted)"></div>
+          <div style="color:var(--muted)">Design: Enkel grå estetik — lätt att anpassa</div>
+        </div>
+
+        <!-- Footer icons (duplicate for easy access) -->
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;align-items:center">
+          <div class="icon-row" aria-label="Sociala länkar footer">
+            <a class="icon-btn icon-youtube" href="https://www.youtube.com/@martinSWE" target="_blank" title="YouTube" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.6.4c-.4 0-1.4.1-2.2 1C.6 4.6.4 6.2.4 6.2S0 8.1 0 10v4c0 1.9.4 3.8.4 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.1.4 7.1.4s4.9 0 8.6-.4c.4 0 1.4-.1 2.2-1 .6-.7.8-2.3.8-2.3s.4-1.9.4-3.8v-4c0-1.9-.4-3.8-.4-3.8zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/></svg>
+            </a>
+            <a class="icon-btn icon-instagram" href="https://www.instagram.com/martinbjorck/" target="_blank" title="Instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1a4.9 4.9 0 1 0 .001 9.801A4.9 4.9 0 0 0 12 8.1zm6.5-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 10.3a1.7 1.7 0 1 1 0 3.401A1.7 1.7 0 0 1 12 10.3z"/></svg>
+            </a>
+            <a class="icon-btn icon-linkedin" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.7v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.8 2.6 4.8 6v7H16v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg>
+            </a>
+            <a class="icon-btn icon-photos" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" title="Google Photos" aria-label="Google Photos">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.1l1.6 1.6A4 4 0 0 0 17 9h3.9v.1L19.3 11A4 4 0 0 0 15.9 15l1.6 1.6V20H12v-3.5L10.4 16A4 4 0 0 0 7 11.9L5.4 10H3v-.1L5.4 8A4 4 0 0 0 10.4 4.6L12 3.1z"/></svg>
+            </a>
+            <a class="icon-btn icon-mail" href="mailto:martinbjk@gmail.com" title="E-post" aria-label="E-post">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+          <div class="icon-row-label">YouTube · Instagram · LinkedIn · Google Photos · E-post</div>
         </div>
       </footer>
     </main>
   </div>
 
   <script>
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox
+    (function(){
+      const overlay = document.getElementById('lightboxOverlay');
+      const lbImg = document.getElementById('lightboxImg');
+      document.querySelectorAll('.lightbox').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          lbImg.src = link.href;
+          overlay.style.display = 'flex';
+        });
+      });
+      overlay.addEventListener('click', () => { overlay.style.display = 'none'; lbImg.src = ''; });
+    })();
+
+    // Contact button fallback (mailto + Gmail fallback on desktop)
+    (function(){
+      const btn = document.getElementById('contactBtn');
+      if(!btn) return;
+      const mail = 'martinbjk@gmail.com';
+      const subject = encodeURIComponent('Förfrågan om fotografering');
+      const body = encodeURIComponent('Hej Martin,%0D%0A%0D%0AJag är intresserad av fotografering...');
+
+      btn.addEventListener('click', function(e){
+        // Try mailto
+        window.location.href = 'mailto:' + mail + '?subject=' + subject + '&body=' + body;
+
+        // Fallback: open Gmail compose after short delay on desktop
+        setTimeout(function(){
+          const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+          if(!isMobile){
+            window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + mail + '&su=' + subject + '&body=' + body, '_blank');
+          }
+        },700);
+      });
+    })();
   </script>
 </body>
 </html>
