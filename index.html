@@ -265,10 +265,36 @@ p.lead{font-size:15px}
   </div>
 
   <div style="margin-top:16px;">
-    <a class="btn" href="mailto:martinbjk@gmail.com">Kontakta mig för fotografering</a>
-  </div>
-</section>
+    <!-- Kontaktknapp med trygg fallback -->
+<a class="btn" id="contactBtn" href="mailto:martinbjk@gmail.com">
+  Kontakta mig för fotografering
+</a>
 
+<script>
+  (function(){
+    const btn = document.getElementById('contactBtn');
+    const mail = 'martinbjk@gmail.com';
+    const subject = encodeURIComponent('Förfrågan om fotografering');
+    const body = encodeURIComponent('Hej Martin,%0D%0A%0D%0AJag är intresserad av fotografering...');
+
+    // För säkerhets skull: om användaren klickar, försök mailto, och efter 700ms öppna Gmail som fallback.
+    btn.addEventListener('click', function(e){
+      // standard: följa href mailto
+      // Vi växlar till mailto först:
+      window.location.href = 'mailto:' + mail + '?subject=' + subject + '&body=' + body;
+
+      // Fallback: öppna Gmail i nytt fönster efter kort fördröjning om mailto inte hanteras.
+      // (Användaren får då en extra flik med Gmail compose — bättre än inget.)
+      setTimeout(function(){
+        // Kontroll: bara öppna fallback i desktop (inte mobil)
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+          window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + mail + '&su=' + subject + '&body=' + body, '_blank');
+        }
+      }, 700);
+    });
+  })();
+</script>
 
 
 
