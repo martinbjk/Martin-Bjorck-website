@@ -119,6 +119,24 @@ p.lead{font-size:15px}
 }
   </style>
 </head>
+  /* Icon button group */
+.icon-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.icon-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;height:44px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #e6e6e6;
+  box-shadow: 0 6px 18px rgba(17,24,39,0.04);
+  transition:transform .12s ease, box-shadow .12s ease;
+  text-decoration:none;
+}
+.icon-btn:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(17,24,39,0.08); }
+.icon-btn svg{width:20px;height:20px;display:block;fill:#374151} /* mörkgrå */
+.icon-label{font-size:13px;color:var(--muted);margin-left:8px}
+
   <!-- LIGHTBOX -->
 <!-- LIGHTBOX overlay -->
 <div id="lightboxOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;z-index:9999">
@@ -298,14 +316,48 @@ p.lead{font-size:15px}
 
 
 
-          <section id="kontakt" class="card" style="margin-top:16px">
-            <h2 class="section-title">Kontakt</h2>
-            <div class="social" style="margin-top:8px">
-              <a class="btn" href="https://www.youtube.com/@martinSWE" target="_blank">YouTube</a>
-              <a class="btn" href="https://www.instagram.com/martinbjorck/" target="_blank">Instagram</a>
-              <a class="btn" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank">LinkedIn</a>
-              <a class="btn" href="mailto:martinbjk@gmail.com">E-post: martinbjk@gmail.com</a>
-            </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+  <div class="icon-row" aria-label="Sociala länkar">
+    <!-- YouTube -->
+    <a class="icon-btn" href="https://www.youtube.com/@martinSWE" target="_blank" title="YouTube — Martin" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.6.4c-.4 0-1.4.1-2.2 1C.6 4.6.4 6.2.4 6.2S0 8.1 0 10v4c0 1.9.4 3.8.4 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.1.4 7.1.4s4.9 0 8.6-.4c.4 0 1.4-.1 2.2-1 .6-.7.8-2.3.8-2.3s.4-1.9.4-3.8v-4c0-1.9-.4-3.8-.4-3.8zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a class="icon-btn" href="https://www.instagram.com/martinbjorck/" target="_blank" title="Instagram — Martin" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.1a4.9 4.9 0 1 0 .001 9.801A4.9 4.9 0 0 0 12 8.1zm6.5-3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 10.3a1.7 1.7 0 1 1 0 3.401A1.7 1.7 0 0 1 12 10.3z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="icon-btn" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" title="LinkedIn — Martin" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.7v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.8 2.6 4.8 6v7H16v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/>
+      </svg>
+    </a>
+
+    <!-- Google Photos -->
+    <a class="icon-btn" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" title="Google Photos" aria-label="Google Photos">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 3.1l1.6 1.6A4 4 0 0 0 17 9h3.9v.1L19.3 11A4 4 0 0 0 15.9 15l1.6 1.6V20H12v-3.5L10.4 16A4 4 0 0 0 7 11.9L5.4 10H3v-.1L5.4 8A4 4 0 0 0 10.4 4.6L12 3.1z"/>
+      </svg>
+    </a>
+
+    <!-- Mail -->
+    <a class="icon-btn" href="mailto:martinbjk@gmail.com" title="E-post" aria-label="E-post">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Valfri textlabel under ikonerna -->
+  <div style="margin-top:6px; color:var(--muted); font-size:13px;">YouTube · Instagram · LinkedIn · Google Photos · E-post</div>
+</div>
+
           </section>
         </div>
 
