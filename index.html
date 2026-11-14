@@ -173,6 +173,17 @@ h3{font-weight:700;font-stretch:105%;font-size:20px;margin:0 0 8px;line-height:1
 .offer{border-top:1px solid #3d3839;padding:22px 0;font-size:14px;color:#a9a6a7;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .offer a{color:#fff}
 
+/* Dela sidan */
+.share{border-top:1px solid #3d3839;padding:40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.share h3{color:#fff;margin:0 0 4px}
+.share p{margin:0;font-size:15px}
+.share-btns{display:flex;flex-wrap:wrap;gap:10px}
+.share-btns a,.share-btns button{font:inherit;font-size:15px;font-weight:600;color:#fff;background:transparent;border:2px solid #6b6667;border-radius:3px;padding:10px 16px;text-decoration:none;cursor:pointer}
+.share-btns a:hover,.share-btns button:hover{border-color:#fff}
+.share-btns .main{background:#fff;color:var(--ink);border-color:#fff}
+.share-btns .main:hover{background:var(--stock)}
+#shareNative{display:none}
+
 /* Lightbox */
 #lightbox{display:none;position:fixed;inset:0;background:rgba(35,31,32,.95);z-index:100;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
 #lightbox.open{display:flex}
@@ -457,6 +468,20 @@ h3{font-weight:700;font-stretch:105%;font-size:20px;margin:0 0 8px;line-height:1
           </div>
         </div>
       </div>
+      <div class="share">
+        <div>
+          <h3>Dela sidan</h3>
+          <p>Känner du någon som söker en tekniker? Skicka gärna vidare.</p>
+        </div>
+        <div class="share-btns">
+          <button type="button" class="main" id="shareNative">Dela</button>
+          <button type="button" id="copyLink">Kopiera länk</button>
+          <a id="shLinkedin" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="shFacebook" target="_blank" rel="noopener">Facebook</a>
+          <a id="shWhatsapp" target="_blank" rel="noopener">WhatsApp</a>
+          <a id="shMail">E-post</a>
+        </div>
+      </div>
       <div class="offer">
         <span>© <span id="year"></span> Martin Björck, Helsingborg</span>
         <span>Vill du ha en liknande hemsida? <a href="mailto:martinbjk@gmail.com?subject=Intresse%20f%C3%B6r%20hemsida">Hör av dig</a></span>
@@ -478,6 +503,34 @@ h3{font-weight:700;font-stretch:105%;font-size:20px;margin:0 0 8px;line-height:1
 
     // Färgremsan "trycks" fram en gång när sidan laddas
     document.querySelectorAll('.strip-load span').forEach(function(s, i){ s.style.animationDelay = (i * 0.04) + 's'; });
+
+    // Dela sidan
+    (function(){
+      var url = 'https://martinbjk.github.io/Martin-Bjorck-website/';
+      var title = 'Martin Björck – teknisk specialist inom inkjet och kombinationstryck';
+      var u = encodeURIComponent(url), t = encodeURIComponent(title);
+      document.getElementById('shLinkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      document.getElementById('shFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + u;
+      document.getElementById('shWhatsapp').href = 'https://wa.me/?text=' + t + '%20' + u;
+      document.getElementById('shMail').href = 'mailto:?subject=' + t + '&body=' + t + '%0A' + u;
+
+      // Mobilens egen delningsmeny om den finns
+      var nativeBtn = document.getElementById('shareNative');
+      if (navigator.share) {
+        nativeBtn.style.display = 'inline-block';
+        nativeBtn.addEventListener('click', function(){
+          navigator.share({ title: title, url: url }).catch(function(){});
+        });
+      }
+
+      // Kopiera länk
+      var copyBtn = document.getElementById('copyLink');
+      copyBtn.addEventListener('click', function(){
+        function done(){ copyBtn.textContent = 'Länken är kopierad'; setTimeout(function(){ copyBtn.textContent = 'Kopiera länk'; }, 2500); }
+        if (navigator.clipboard) { navigator.clipboard.writeText(url).then(done, function(){ window.prompt('Kopiera länken:', url); }); }
+        else { window.prompt('Kopiera länken:', url); }
+      });
+    })();
 
     // Lightbox – klicka för att förstora, klicka eller Esc för att stänga
     (function(){
