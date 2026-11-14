@@ -3,359 +3,456 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Martin Björck — Tryckare & maskinoperatör</title>
-  <meta name="description" content="Martin Björck — erfaren tryckare och maskinoperatör sedan 1990 i Helsingborg. Erfarenhet, CV och kontakt – plus lite hobbyfotografering." />
+  <title>Martin Björck — Teknisk specialist, inkjet & kombinationstryck</title>
+  <meta name="description" content="Martin Björck, Helsingborg — teknisk specialist inom industriell inkjet och flexo med 30+ år i etikettbranschen. Bygger egna webbtjänster och appar med AI." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,500;62..125,700;62..125,800&display=swap" rel="stylesheet">
   <style>
+/* Färger hämtade från tryckpressen: process-CMYK på papper */
 :root{
-  --bg:#faf9f7;
-  --surface:#ffffff;
-  --line:#e8e5e0;
-  --text:#1c1c1c;
-  --muted:#6b6863;
-  --accent:#1f3a5f;      /* djup tryckfärgsblå */
-  --accent-soft:#e9eef5;
-  --radius:14px;
-  --max:1120px;
-  --serif:'Fraunces',Georgia,serif;
-  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --paper:#ffffff;
+  --stock:#f1f3f4;
+  --ink:#231f20;        /* 100 % K */
+  --grey:#5d5a5b;
+  --rule:#d9dcde;
+  --c:#00aeef;
+  --m:#ec008c;
+  --y:#fff200;
+  --max:1160px;
+  --font:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
 
-/* ---------- Toppmeny ---------- */
-.topbar{position:sticky;top:0;z-index:50;background:rgba(250,249,247,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.brand{font-family:var(--serif);font-weight:600;font-size:20px;text-decoration:none;white-space:nowrap}
-.menu{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-.menu::-webkit-scrollbar{display:none}
-.menu a{text-decoration:none;font-size:15px;color:var(--muted);padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
-.menu a:hover{background:var(--accent-soft);color:var(--accent)}
+/* ---------- Kontrollremsan ---------- */
+.strip{display:flex;height:12px}
+.strip span{flex:1}
+.strip .c{background:var(--c)} .strip .m{background:var(--m)} .strip .y{background:var(--y)} .strip .k{background:var(--ink)}
+.strip .c50{background:#80d7f7} .strip .m50{background:#f580c6} .strip .y50{background:#fff980} .strip .k50{background:#918f90}
+.strip-load span{transform:scaleY(0);transform-origin:top;animation:print .5s ease-out forwards}
+@keyframes print{to{transform:none}}
+
+/* ---------- Meny ---------- */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px}
+.nav .name{font-weight:700;font-stretch:112%;text-decoration:none;font-size:17px;white-space:nowrap}
+.nav ul{display:flex;flex-wrap:wrap;gap:6px 24px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--grey)}
+.nav ul a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--m);text-decoration-thickness:2px;text-underline-offset:5px}
 
 /* ---------- Hero ---------- */
-.hero{padding:72px 0 56px}
-.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center}
-.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 14px}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0}
-h1{font-size:clamp(40px,6vw,64px);letter-spacing:-.01em}
-.hero p.intro{font-size:19px;color:var(--muted);margin:20px 0 28px;max-width:34em}
-.hero-portrait{position:relative}
-.hero-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
-.hero-portrait::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--line);border-radius:var(--radius);z-index:-1}
+.hero{display:grid;grid-template-columns:1fr 360px;gap:72px;align-items:end;padding:56px 0 88px}
+h1{font-weight:800;font-stretch:118%;font-size:clamp(52px,8.6vw,112px);line-height:.9;letter-spacing:-.025em;margin:0}
+.hero .role{font-size:clamp(20px,2.2vw,26px);font-weight:500;margin:28px 0 10px;max-width:24em;line-height:1.35}
+.hero .sub{color:var(--grey);margin:0 0 34px;max-width:36em}
+.buttons{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:14px 24px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid var(--ink);border-radius:3px}
+.btn-solid{background:var(--ink);color:#fff}
+.btn-solid:hover{background:#000}
+.btn-line:hover{background:var(--stock)}
 
-/* ---------- Knappar ---------- */
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none;border:1px solid var(--accent);transition:transform .15s,background .2s,color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#152a46}
-.btn-ghost{background:transparent;color:var(--accent)}
-.btn-ghost:hover{background:var(--accent-soft)}
+/* Porträtt som provtryck med skärmärken */
+.proof{position:relative;padding:22px}
+.proof img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center top;filter:contrast(1.04)}
+.proof i{position:absolute;width:16px;height:16px;border-color:var(--ink);border-style:solid;border-width:0}
+.proof .tl{top:0;left:0;border-right-width:1px;border-bottom-width:1px}
+.proof .tr{top:0;right:0;border-left-width:1px;border-bottom-width:1px}
+.proof .bl{bottom:0;left:0;border-right-width:1px;border-top-width:1px}
+.proof .br{bottom:0;right:0;border-left-width:1px;border-top-width:1px}
+.proof .reg{position:absolute;right:-6px;top:50%;width:14px;height:14px;margin-top:-7px;border:1px solid var(--ink);border-radius:50%}
+.proof .reg::before,.proof .reg::after{content:"";position:absolute;background:var(--ink)}
+.proof .reg::before{left:50%;top:-5px;bottom:-5px;width:1px}
+.proof .reg::after{top:50%;left:-5px;right:-5px;height:1px}
 
 /* ---------- Sektioner ---------- */
-section{padding:72px 0;border-top:1px solid var(--line)}
-.section-head{max-width:40em;margin-bottom:36px}
-.section-head h2{font-size:clamp(30px,4vw,40px)}
-.section-head p{color:var(--muted);margin:12px 0 0}
+.block{padding:96px 0;border-top:1px solid var(--rule)}
+h2{font-weight:800;font-stretch:112%;font-size:clamp(32px,4.4vw,52px);line-height:1;letter-spacing:-.015em;margin:0 0 22px}
+h3{font-weight:700;font-stretch:105%;font-size:20px;margin:0 0 8px;line-height:1.25}
+.lead{font-size:19px;max-width:34em;margin:0}
+.muted{color:var(--grey)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
 
-/* Två delar */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.panel h3{font-size:24px;margin-bottom:10px}
-.panel p{color:var(--muted);margin:0 0 18px}
-.panel .num{font-family:var(--serif);font-size:15px;color:var(--accent);margin-bottom:8px;display:block}
-.textlink{color:var(--accent);font-weight:500;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+/* Jobbsedel (faktatabell) */
+.ticket{margin:0;border-top:3px solid var(--ink)}
+.ticket div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.ticket dt{color:var(--grey);font-size:15px}
+.ticket dd{margin:0;font-weight:500}
 
-/* Fakta & chips */
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 0 40px}
-.fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-.fact strong{display:block;font-family:var(--serif);font-size:30px;color:var(--accent);line-height:1.1}
-.fact span{font-size:14px;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.chips li{background:var(--surface);border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-size:14px}
+/* Arbetslivet som tidslinje */
+.jobs{margin-top:72px;border-top:3px solid var(--ink)}
+.job{display:grid;grid-template-columns:150px 1fr;gap:16px 40px;padding:32px 0;border-bottom:1px solid var(--rule)}
+.job .years{font-weight:700;font-stretch:112%;font-size:20px}
+.job .where{color:var(--grey);margin:0 0 14px}
+.job ul{margin:0;padding-left:18px;columns:2;column-gap:40px}
+.job li{break-inside:avoid;margin-bottom:6px}
+.job.short ul{columns:1}
 
-/* Galleri */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
-.gallery a{position:relative;display:block;border-radius:10px;overflow:hidden;background:#eee;aspect-ratio:4/5}
-.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.gallery a:hover img{transform:scale(1.04)}
-.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:14px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));opacity:0;transition:opacity .3s}
-.gallery a:hover figcaption{opacity:1}
-.gallery.photo{grid-template-columns:1.4fr 1fr}
-.gallery.photo a{aspect-ratio:auto;min-height:340px}
+/* Maskinbilder */
+.press{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:64px}
+.press a{display:block;overflow:hidden;background:var(--stock);cursor:zoom-in}
+.press img{width:100%;height:100%;object-fit:cover}
+.press .p1{grid-column:span 7;height:440px}
+.press .p2{grid-column:span 5;height:440px}
+.press .p3,.press .p4,.press .p5,.press .p6{grid-column:span 3;aspect-ratio:3/4}
+.caption{font-size:14px;color:var(--grey);margin-top:14px}
 
-/* Listor */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
-.clean{list-style:none;padding:0;margin:0}
-.clean li{padding:10px 0;border-bottom:1px solid var(--line)}
-.clean li:last-child{border-bottom:0}
-.note{font-size:13px;color:var(--muted);margin-top:18px}
+/* AI & digitalt – projektregister */
+.ai{background:var(--stock)}
+.ai-intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;margin-bottom:56px}
+.how{list-style:none;margin:0;padding:0}
+.how li{position:relative;padding:10px 0 10px 26px;border-bottom:1px solid var(--rule)}
+.how li:last-child{border-bottom:0}
+.how li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:10px;background:var(--c)}
+.projects{border-top:3px solid var(--ink)}
+.project{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) auto;gap:16px 40px;align-items:baseline;padding:26px 0;border-bottom:1px solid #c9cdd0}
+.project h3{font-size:22px;margin:0}
+.project p{margin:0}
+.project .tech{display:block;font-size:14px;color:var(--grey);margin-top:6px}
+.project .open{font-weight:600;white-space:nowrap;text-decoration:underline;text-decoration-color:var(--m);text-decoration-thickness:2px;text-underline-offset:4px}
+.project .status{font-size:14px;color:var(--grey);white-space:nowrap}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
+.tools li{background:var(--paper);border:1px solid var(--rule);padding:6px 12px;font-size:14px;border-radius:2px}
 
-/* CV */
-.cv-box{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.cv-box ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+/* Utbildning */
+.edu{list-style:none;margin:0;padding:0;border-top:3px solid var(--ink)}
+.edu li{display:grid;grid-template-columns:80px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.edu .yr{font-weight:700;font-stretch:112%}
+.edu small{display:block;color:var(--grey);font-size:15px}
+.langs{margin:0;border-top:3px solid var(--ink)}
+.langs div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.langs dt{font-weight:500}
+.langs dd{margin:0;color:var(--grey)}
+.edu-side h3{margin-top:48px}
+.edu-side h3:first-child{margin-top:0}
+
+/* Hobby */
+.hobby{display:grid;grid-template-columns:5fr 4fr;gap:72px;align-items:start}
+.hobby-pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hobby-pics a{display:block;overflow:hidden;cursor:zoom-in;background:var(--stock)}
+.hobby-pics img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+.hobby p{margin:0 0 18px}
+.hobby h3{margin-top:30px}
+.ticks{list-style:none;padding:0;margin:0 0 22px}
+.ticks li{padding-left:22px;position:relative;margin:6px 0}
+.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:10px;background:var(--y);outline:1px solid var(--ink)}
+.textlink{font-weight:600;text-decoration:underline;text-decoration-color:var(--c);text-decoration-thickness:2px;text-underline-offset:4px}
+.small{font-size:14px;color:var(--grey)}
 
 /* Kontakt */
-.contact{text-align:center}
-.contact .section-head{margin:0 auto 28px}
-.contact .actions{justify-content:center}
-.social{display:flex;justify-content:center;gap:12px;margin-top:32px}
-.social a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);transition:background .2s,border-color .2s,transform .15s}
-.social a:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
-.social svg{width:20px;height:20px;fill:var(--text);transition:fill .2s}
-.social a:hover svg{fill:#fff}
-.offer{margin:48px auto 0;max-width:560px;font-size:15px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:20px}
-
-footer{border-top:1px solid var(--line);padding:28px 0;font-size:14px;color:var(--muted);text-align:center}
+.contact{background:var(--ink);color:#fff;padding:96px 0 0}
+.contact h2{color:#fff}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;padding-bottom:88px}
+.contact .big{display:block;font-weight:700;font-stretch:110%;font-size:clamp(22px,3vw,34px);text-decoration:underline;text-decoration-color:var(--m);text-decoration-thickness:3px;text-underline-offset:8px;word-break:break-word;margin-top:10px}
+.contact .big.tel{text-decoration-color:var(--c)}
+.contact p{color:#c9c7c8;max-width:30em}
+.contact .btn{border-color:#fff}
+.contact .btn-solid{background:#fff;color:var(--ink)}
+.contact .btn-solid:hover{background:var(--stock)}
+.contact .btn-line{color:#fff}
+.contact .btn-line:hover{background:#3a3536}
+.social{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap}
+.social a{font-size:15px;color:#c9c7c8;text-decoration:none;border-bottom:1px solid #6b6667;padding-bottom:2px}
+.social a:hover{color:#fff;border-color:#fff}
+.offer{border-top:1px solid #3d3839;padding:22px 0;font-size:14px;color:#a9a6a7;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.offer a{color:#fff}
 
 /* Lightbox */
-#lightbox{display:none;position:fixed;inset:0;background:rgba(15,15,15,.92);z-index:100;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
+#lightbox{display:none;position:fixed;inset:0;background:rgba(35,31,32,.95);z-index:100;align-items:center;justify-content:center;flex-direction:column;padding:24px;cursor:zoom-out}
 #lightbox.open{display:flex}
-#lightbox img{max-width:94vw;max-height:84vh;border-radius:8px}
+#lightbox img{max-width:94vw;max-height:84vh}
 #lightbox p{color:#ddd;margin:14px 0 0;font-size:15px}
 
-/* Animation när man scrollar */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.strip-load span{animation:none;transform:none}html{scroll-behavior:auto}}
 
-/* ---------- Mobil ---------- */
+/* ---------- Mindre skärmar ---------- */
 @media (max-width:900px){
-  .hero{padding:40px 0}
-  .hero .wrap{grid-template-columns:1fr;gap:36px}
-  .hero-portrait{max-width:380px}
-  .split,.two-col{grid-template-columns:1fr}
-  .facts{grid-template-columns:repeat(2,1fr)}
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .gallery.photo{grid-template-columns:1fr}
-  .gallery figcaption{opacity:1}
+  .hero{grid-template-columns:1fr;gap:40px;padding:32px 0 64px}
+  .proof{max-width:300px}
+  .two,.hobby,.contact .grid,.ai-intro{grid-template-columns:1fr;gap:40px}
+  .press .p1,.press .p2{grid-column:span 12;height:auto;aspect-ratio:4/3}
+  .press .p3,.press .p4,.press .p5,.press .p6{grid-column:span 6}
+  .block{padding:64px 0}
+  .job ul{columns:1}
+  .project{grid-template-columns:1fr;gap:8px}
 }
 @media (max-width:600px){
   body{font-size:16px}
-  .wrap{padding:0 18px}
-  .brand{font-size:17px}
-  .menu a{padding:6px 9px;font-size:14px}
-  section{padding:52px 0}
-  .panel,.cv-box{padding:24px}
-  .gallery{gap:8px}
-  .topbar .wrap{justify-content:center}
-  .brand{display:none}
-  .menu{gap:2px}
-  .menu a{padding:6px 10px;font-size:15px}
+  .wrap{padding:0 20px}
+  .nav{flex-direction:column;align-items:flex-start;gap:12px;padding:18px 0}
+  .nav ul{gap:6px 18px}
+  .ticket div,.job{grid-template-columns:1fr;gap:2px}
+  .job .years{margin-bottom:4px}
+  .press{gap:8px;margin-top:40px}
+  .edu li{grid-template-columns:64px 1fr}
 }
   </style>
 </head>
 <body>
 
-  <!-- Toppmeny -->
-  <header class="topbar">
-    <div class="wrap">
-      <a class="brand" href="#">Martin Björck</a>
-      <nav class="menu" aria-label="Huvudmeny">
-        <a href="#om">Om</a>
-        <a href="#tryck">Tryck</a>
-        <a href="#foto">Foto</a>
-        <a href="#cv">CV</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </div>
-  </header>
+  <div class="strip strip-load" aria-hidden="true">
+    <span class="c"></span><span class="m"></span><span class="y"></span><span class="k"></span>
+    <span class="c50"></span><span class="m50"></span><span class="y50"></span><span class="k50"></span>
+    <span class="c"></span><span class="m"></span><span class="y"></span><span class="k"></span>
+    <span class="c50"></span><span class="m50"></span><span class="y50"></span><span class="k50"></span>
+  </div>
 
-  <!-- Hero -->
-  <div class="hero">
-    <div class="wrap">
+  <div class="wrap">
+    <nav class="nav" aria-label="Huvudmeny">
+      <a class="name" href="#">Martin Björck</a>
+      <ul>
+        <li><a href="#erfarenhet">Erfarenhet</a></li>
+        <li><a href="#ai">AI &amp; digitalt</a></li>
+        <li><a href="#utbildning">Utbildning</a></li>
+        <li><a href="#foto">Hobby</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
       <div>
-        <p class="eyebrow">Tryckare &amp; maskinoperatör · Helsingborg</p>
-        <h1>Tryckare och maskinoperatör sedan 1990.</h1>
-        <p class="intro">Jag är tryckare och maskinoperatör sedan 1990, med lång erfarenhet av etikett- och industritryck. På fritiden fotograferar jag – det är min stora hobby.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#cv">Se mitt CV</a>
-          <a class="btn btn-ghost" href="#tryck">Min erfarenhet</a>
+        <h1>Martin<br>Björck</h1>
+        <p class="role">Teknisk specialist inom industriell inkjet och kombinationstryck. Drygt 30 år i etikettbranschen – och nyfiken på AI.</p>
+        <p class="sub">Jag har haft fullt tekniskt ansvar för en av de mer avancerade hybridmaskinerna i svensk etikettproduktion. Vid sidan av det bygger jag egna webbtjänster och appar med AI som verktyg. Nu söker jag en roll där teknisk förståelse och specialistkunskap kommer till nytta.</p>
+        <div class="buttons">
+          <a class="btn btn-solid" href="files/martin-bjorck-cv.pdf" download>Ladda ner CV</a>
+          <a class="btn btn-line" href="#kontakt">Kontakta mig</a>
         </div>
       </div>
-      <div class="hero-portrait">
+      <div class="proof">
+        <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><span class="reg" aria-hidden="true"></span>
         <img src="profil.jpg" alt="Porträtt av Martin Björck" width="585" height="624">
       </div>
-    </div>
+    </header>
   </div>
 
   <main>
-    <!-- Om -->
-    <section id="om">
+    <!-- Erfarenhet -->
+    <section id="erfarenhet" class="block">
       <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Om mig</p>
-          <h2>Yrke och hobby</h2>
-          <p>Färg, ljus och precision – i jobbet vid tryckpressen och på fritiden bakom kameran.</p>
-        </div>
-        <div class="split">
-          <div class="panel reveal">
-            <span class="num">01 — Yrket</span>
-            <h3>Tryckare &amp; maskinoperatör</h3>
-            <p>30+ år i svensk industriell etikett- och trycksaksproduktion: flexo, inkjet och screen. Under 17 år körde jag en hybridmaskin för flexo och inkjet med fullt ansvar som operatör och tekniker.</p>
-            <a class="textlink" href="#tryck">Läs mer om min erfarenhet</a>
-          </div>
-          <div class="panel reveal">
-            <span class="num">02 — Fritiden</span>
-            <h3>Hobbyfotograf</h3>
-            <p>Fotografering är något jag gör för att det är roligt: hav, surf, natur och porträtt. Mest digitalt, men ibland på svartvit film.</p>
-            <a class="textlink" href="#foto">Se några bilder</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tryck -->
-    <section id="tryck">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Tryckare</p>
-          <h2>Erfarenhet från produktionsgolvet</h2>
-          <p>Från inställning och färgstyrning till underhåll och kvalitet – jag har haft helhetsansvar för maskinen och det som kommer ut ur den.</p>
-        </div>
-
-        <div class="facts reveal">
-          <div class="fact"><strong>1990</strong><span>Tryckare sedan</span></div>
-          <div class="fact"><strong>17 år</strong><span>på flexo/inkjet-hybrid</span></div>
-          <div class="fact"><strong>~10 år</strong><span>som skyddsombud</span></div>
-          <div class="fact"><strong>3 st</strong><span>behörigheter: YKB, ADR, truck</span></div>
-        </div>
-
-        <ul class="chips reveal" aria-label="Kompetenser">
-          <li>Flexotryck</li>
-          <li>Inkjet &amp; variabel data</li>
-          <li>Screentryck</li>
-          <li>Färgstyrning</li>
-          <li>Flerskiktsetiketter</li>
-          <li>Maskinunderhåll</li>
-          <li>5S &amp; kvalitet</li>
-          <li>Arbetsmiljö</li>
-          <li>Adobe / GIMP</li>
-          <li>Svenska &amp; engelska</li>
-        </ul>
-
-        <div class="gallery reveal">
-          <a href="images/cmyk.jpg" class="lb" data-caption="Inkjetenheten i drift"><img src="images/cmyk.jpg" alt="Inkjetenhet på tryckpress" loading="lazy"><figcaption>Inkjetenheten i drift</figcaption></a>
-          <a href="images/inkjet.jpg" class="lb" data-caption="Hybridpressen"><img src="images/inkjet.jpg" alt="Hybridtryckpress i fabrikshall" loading="lazy"><figcaption>Hybridpressen</figcaption></a>
-          <a href="images/farg.jpg" class="lb" data-caption="Färgverk med gul färg"><img src="images/farg.jpg" alt="Färgverk med gul tryckfärg" loading="lazy"><figcaption>Färgverk</figcaption></a>
-          <a href="images/maskin.jpg" class="lb" data-caption="Tryckpressar i produktionen"><img src="images/maskin.jpg" alt="Rad av tryckpressar" loading="lazy"><figcaption>Produktionen</figcaption></a>
-          <a href="images/maskin2.jpg" class="lb" data-caption="Manöverpanelen"><img src="images/maskin2.jpg" alt="Manöverpanel på tryckpress" loading="lazy"><figcaption>Manöverpanelen</figcaption></a>
-          <a href="images/pharma.jpg" class="lb" data-caption="Etikettproduktion"><img src="images/pharma.jpg" alt="Etikettproduktion i fabrik" loading="lazy"><figcaption>Etikettproduktion</figcaption></a>
-        </div>
-        <p class="note">Maskiner jag arbetat med 1995–2022. Klicka på en bild för att förstora.</p>
-      </div>
-    </section>
-
-    <!-- Foto -->
-    <section id="foto">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Hobby</p>
-          <h2>Fotografering på fritiden</h2>
-          <p>Natur- och surfbilder från västkusten och en del svartvitt på film.</p>
-        </div>
-
-        <div class="gallery photo reveal">
-          <a href="images/mini5.jpg" class="lb" data-caption="Sommar vid havet"><img src="images/mini5.jpg" alt="Strand med rosor och blått hav" loading="lazy"><figcaption>Sommar vid havet</figcaption></a>
-          <a href="images/mini.jpg" class="lb" data-caption="Analog svartvit film"><img src="images/mini.jpg" alt="Svartvitt motljus över bryggor och hav" loading="lazy"><figcaption>Analog svartvit film</figcaption></a>
-        </div>
-        <div class="actions" style="margin-top:20px">
-          <a class="btn btn-ghost" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" rel="noopener">Öppna hela fotoalbumet →</a>
-        </div>
-
-        <div class="two-col">
-          <div class="panel reveal">
-            <h3>Det jag gillar att pyssla med</h3>
-            <ul class="clean">
-              <li>Digitalkamera med hög upplösning</li>
-              <li>Analog svartvit film</li>
-              <li>Framkallar och kopierar ibland själv i ett enkelt mörkrum</li>
-            </ul>
-          </div>
-          <div class="panel reveal">
-            <h3>Fråga gärna om bilder till</h3>
-            <ul class="clean">
-              <li>Porträtt</li>
-              <li>Dokumentation av maskiner och produktion</li>
-              <li>Produktbilder – små och stora föremål</li>
-              <li>Miljö- och arbetsplatsbilder</li>
-              <li>Landskap och natur</li>
-            </ul>
-          </div>
-        </div>
-        <p class="note">Fotograferingen är en hobby – inte en yrkesverksamhet.</p>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section id="cv">
-      <div class="wrap">
-        <div class="cv-box reveal">
+        <div class="two">
           <div>
-            <p class="eyebrow">CV</p>
-            <h2 style="font-size:32px">Hela min bakgrund på ett ställe</h2>
-            <ul>
-              <li>Tryckare och maskinoperatör sedan 1990</li>
-              <li>Flexo, inkjet, screen, färgstyrning och underhåll</li>
-              <li>YKB, ADR och truckkort</li>
-            </ul>
+            <h2>17 år med en hybridpress</h2>
+            <p class="lead">På Märkas AB i Åstorp ansvarade jag för en Mark Andy-flexopress med integrerad industriell inkjet – först Dotrix/Agfa med 20 skrivhuvuden, senare uppgraderad till Konica Minolta med högre upplösning.</p>
+            <p class="muted" style="margin-top:18px">Jobbet var att få allt att fungera: justera och byta skrivhuvuden, felsöka tillsammans med internationell teknisk support, ställa in tryckparametrar för olika material och hålla färgen rätt i dialog med prepress. Jag arbetar gärna självständigt och löser problem på egen hand.</p>
           </div>
-          <div class="actions">
-            <a class="btn btn-primary" href="files/martin-bjorck-cv.pdf" download>Ladda ner CV (PDF)</a>
-            <a class="btn btn-ghost" href="files/martin-bjorck-cv.pdf" target="_blank" rel="noopener">Öppna</a>
+          <dl class="ticket">
+            <div><dt>Roll</dt><dd>Teknisk specialist, tekniker och produktionsansvarig</dd></div>
+            <div><dt>Bakgrund</dt><dd>Utbildad offsettryckare 1992, i etikettbranschen sedan 1994</dd></div>
+            <div><dt>Inkjet</dt><dd>Dotrix/Agfa, Konica Minolta – skrivhuvuden, drop-formation, RIP</dd></div>
+            <div><dt>Flexo</dt><dd>Mark Andy, MPS, Gallus – stansning, perforering, coronabehandling</dd></div>
+            <div><dt>Specialitet</dt><dd>Variabeldata, streckkoder, löpnummer, peel-open-etiketter med dolt tryck</dd></div>
+            <div><dt>Process</dt><dd>CMYK-färgstyrning, 5S, Lean, produktionsplanering</dd></div>
+            <div><dt>Arbetsmiljö</dt><dd>Skyddsombud och huvudskyddsombud 2011–2022</dd></div>
+          </dl>
+        </div>
+
+        <div class="jobs">
+          <div class="job">
+            <div class="years">2005–2022</div>
+            <div>
+              <h3>Tekniker &amp; produktionsansvarig, inkjet/flexo-hybrid</h3>
+              <p class="where">Märkas AB, Åstorp</p>
+              <ul>
+                <li>Precisionsjustering och byte av skrivhuvuden</li>
+                <li>Felsökning och reparation med internationell support</li>
+                <li>Tryckparametrar för olika material och ytbehandlingar</li>
+                <li>Färg- och kvalitetskontroll i CMYK, profiler och RIP</li>
+                <li>Variabeldata i industriell skala</li>
+                <li>Flerskiktsetiketter för lotterier och kampanjer</li>
+                <li>Produktionsplanering och beställning av material</li>
+                <li>Skyddsombud, huvudskyddsombud och fackligt kontaktombud</li>
+              </ul>
+            </div>
           </div>
+          <div class="job short">
+            <div class="years">1995–2005</div>
+            <div>
+              <h3>Etikettryckare</h3>
+              <p class="where">Strålfors AB / Eson Pac AB, Göteborg</p>
+              <ul>
+                <li>Screen i fyrfärg med inline-stans, flexotryck i självhäftande material och samordning av material</li>
+              </ul>
+            </div>
+          </div>
+          <div class="job short">
+            <div class="years">1994</div>
+            <div>
+              <h3>Produktionsplanerare</h3>
+              <p class="where">Printcom Etikett, Linköping</p>
+              <ul>
+                <li>Planerade produktionsflödet för etiketter – deadlines, kvalitet och materialbeställning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="press">
+          <a class="lb p1" href="images/cmyk.jpg" data-caption="Inkjetenheten i drift"><img src="images/cmyk.jpg" alt="Inkjetenhet som skriver ut etiketter" loading="lazy"></a>
+          <a class="lb p2" href="images/farg.jpg" data-caption="Färgverk med gul tryckfärg"><img src="images/farg.jpg" alt="Färgverk med gul tryckfärg" loading="lazy"></a>
+          <a class="lb p3" href="images/inkjet.jpg" data-caption="Hybridpressen"><img src="images/inkjet.jpg" alt="Hybridtryckpress i fabrikshall" loading="lazy"></a>
+          <a class="lb p4" href="images/maskin2.jpg" data-caption="Manöverpanelen"><img src="images/maskin2.jpg" alt="Manöverpanel på tryckpress" loading="lazy"></a>
+          <a class="lb p5" href="images/pharma.jpg" data-caption="Etikettproduktion"><img src="images/pharma.jpg" alt="Etikettproduktion i fabrik" loading="lazy"></a>
+          <a class="lb p6" href="images/maskin.jpg" data-caption="Pressar i rad"><img src="images/maskin.jpg" alt="Rad av tryckpressar" loading="lazy"></a>
+        </div>
+        <p class="caption">Maskiner jag arbetat med. Klicka på en bild för att se den större.</p>
+      </div>
+    </section>
+
+    <!-- AI & digitalt -->
+    <section id="ai" class="block ai">
+      <div class="wrap">
+        <div class="ai-intro">
+          <div>
+            <h2>Jag bygger med AI</h2>
+            <p class="lead">Jag har ingen IT-utbildning. Men med AI som verktyg har jag byggt och publicerat egna webbplatser, appar och AI-tjänster – från idé till färdig sida på nätet.</p>
+          </div>
+          <ul class="how">
+            <li>Använder AI för felsökning, dokumentation och problemlösning</li>
+            <li>Publicerar själv via GitHub, Vercel och Cloudflare</li>
+            <li>Godkänt utvecklarkonto hos Google Play Console</li>
+            <li>Kontrollerar fakta mot riktiga källor – AI får inte gissa</li>
+          </ul>
+        </div>
+
+        <div class="projects">
+          <div class="project">
+            <h3>Skateboard Event Calendar</h3>
+            <p>Global kalender över skateboardtävlingar på 7 språk, med artiklar och sökbar karta över inomhusparker.<span class="tech">Next.js · GitHub Actions · SEO</span></p>
+            <a class="open" href="https://www.skateboardeventcalendar.com" target="_blank" rel="noopener">Öppna</a>
+          </div>
+          <div class="project">
+            <h3>Park Judge</h3>
+            <p>AI-domare som bedömer park-åk enligt World Skates olympiska kriterier och föreslår bättre åk.<span class="tech">Gemini AI · Vercel</span></p>
+            <a class="open" href="https://park-judge.vercel.app/" target="_blank" rel="noopener">Öppna</a>
+          </div>
+          <div class="project">
+            <h3>MiljöGuiden</h3>
+            <p>Pilot för att söka i Miljöbalken med AI, där varje svar måste hänvisa till lagtexten.<span class="tech">Gemini AI · källkontroll · Vercel</span></p>
+            <a class="open" href="https://miljoguiden.vercel.app" target="_blank" rel="noopener">Öppna</a>
+          </div>
+          <div class="project">
+            <h3>KustVåg</h3>
+            <p>Surfprognos för västkusten som räknar ut ett betyg per strand utifrån våg- och vinddata.<span class="tech">SMHI · Open-Meteo · JavaScript</span></p>
+            <a class="open" href="https://martinbjk.github.io/SwedishSurfWest" target="_blank" rel="noopener">Öppna</a>
+          </div>
+          <div class="project">
+            <h3>Bølgeagenten</h3>
+            <p>Live-surfprognos för norska västkusten, byggd på öppna data från MET Norway.<span class="tech">MET Norway · GitHub Pages</span></p>
+            <a class="open" href="https://martinbjk.github.io/NorskaVastkusten" target="_blank" rel="noopener">Öppna</a>
+          </div>
+          <div class="project">
+            <h3>Rodinal Film Assistant</h3>
+            <p>App för framkallning av analog film på svenska, engelska och tyska, med timer och recept för ett trettiotal filmer.<span class="tech">PWA · Google Play</span></p>
+            <span class="status">Android-app</span>
+          </div>
+          <div class="project">
+            <h3>Elementaction</h3>
+            <p>Ny sajt för surf, skateboard och snowboard med kalendrar, artiklar och verktyg.<span class="tech">7 språk · egen logotyp</span></p>
+            <a class="open" href="https://elementaction.com" target="_blank" rel="noopener">Öppna</a>
+          </div>
+        </div>
+
+        <ul class="tools" aria-label="Verktyg jag använder">
+          <li>Claude &amp; Claude Code</li>
+          <li>Gemini API</li>
+          <li>GitHub</li>
+          <li>Vercel</li>
+          <li>Cloudflare</li>
+          <li>HTML / CSS / JavaScript</li>
+          <li>Next.js</li>
+          <li>Adobe / GIMP</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Utbildning -->
+    <section id="utbildning" class="block">
+      <div class="wrap two">
+        <div>
+          <h2>Utbildning &amp; certifikat</h2>
+          <ul class="edu">
+            <li><span class="yr">2024</span><span>C-körkort, YKB, ADR, truckkort och Arbete på väg<small>Yrkesakademin, Helsingborg</small></span></li>
+            <li><span class="yr">2022</span><span>F-gascertifikat, kategori 1<small>Incert</small></span></li>
+            <li><span class="yr">1992</span><span>Offsettryckare, 48 veckor<small>AMU, Norrköping</small></span></li>
+            <li><span class="yr"></span><span>Marknadsföring, 10 poäng<small>Handelshögskolan i Göteborg</small></span></li>
+            <li><span class="yr"></span><span>Matematik och mekanik, 35 poäng<small>KTH, Stockholm</small></span></li>
+            <li><span class="yr"></span><span>Officersutbildning, 16 månader<small>Sjökrigsskolan, Marinen – ledarskap under press och operativt ansvar</small></span></li>
+          </ul>
+        </div>
+        <div class="edu-side">
+          <h3>Språk</h3>
+          <dl class="langs">
+            <div><dt>Svenska</dt><dd>Modersmål</dd></div>
+            <div><dt>Engelska</dt><dd>Flytande (C2) – bott 3 år i USA</dd></div>
+            <div><dt>Tyska</dt><dd>Grundläggande (A2)</dd></div>
+            <div><dt>Spanska</dt><dd>Grundläggande (A1)</dd></div>
+          </dl>
+          <h3>Ledarskap</h3>
+          <p class="muted" style="margin:0">Elva år som skyddsombud och huvudskyddsombud, fackligt kontaktombud för GS-facket och officersutbildning i Marinen. Jag är van att ta ansvar för både maskin och människor.</p>
         </div>
       </div>
     </section>
 
-    <!-- Kontakt -->
-    <section id="kontakt" class="contact">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="eyebrow">Kontakt</p>
-          <h2>Hör gärna av dig</h2>
-          <p>Gäller det en tjänst, ett jobb eller bara en fråga – skicka ett mejl så svarar jag.</p>
+    <!-- Hobby -->
+    <section id="foto" class="block">
+      <div class="wrap hobby">
+        <div class="hobby-pics">
+          <a class="lb" href="images/mini5.jpg" data-caption="Sommar vid havet"><img src="images/mini5.jpg" alt="Strand med rosor och blått hav" loading="lazy"></a>
+          <a class="lb" href="images/mini.jpg" data-caption="Svartvit film"><img src="images/mini.jpg" alt="Svartvitt motljus över bryggor och hav" loading="lazy"></a>
         </div>
-        <div class="actions">
-          <a class="btn btn-primary" id="contactBtn" href="mailto:martinbjk@gmail.com?subject=Kontakt%20via%20hemsidan">Skicka e-post</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-
-        <div class="social" aria-label="Sociala länkar">
-          <a href="https://www.instagram.com/martinbjorck/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 5.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@martinSWE" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.6.4c-.4 0-1.4.1-2.2 1C.6 4.6.4 6.2.4 6.2S0 8.1 0 10v4c0 1.9.4 3.8.4 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.1.4 7.1.4s4.9 0 8.6-.4c.4 0 1.4-.1 2.2-1 .6-.7.8-2.3.8-2.3s.4-1.9.4-3.8v-4c0-1.9-.4-3.8-.4-3.8zM9.8 15.1V8.9l6.1 3.1-6.1 3.1z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.7v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.8 2.6 4.8 6v7H16v-6.2c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9z"/></svg>
-          </a>
-          <a href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" rel="noopener" aria-label="Google Foto" title="Google Foto">
-            <svg viewBox="0 0 24 24"><path d="M21 5h-3.2l-1.8-2H8L6.2 5H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm-9 13a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
-          </a>
-          <a href="mailto:martinbjk@gmail.com" aria-label="E-post" title="E-post">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
-        </div>
-
-        <div class="offer reveal">
-          <strong>Vill du ha en liknande hemsida?</strong><br>
-          Jag bygger enkla och stilrena sidor för hobby, portfolio eller CV.
-          <a class="textlink" href="mailto:martinbjk@gmail.com?subject=Intresse%20f%C3%B6r%20hemsida">Hör av dig</a>
+        <div>
+          <h2>På fritiden fotograferar jag</h2>
+          <p>Det är en hobby, inget yrke. Mest hav, surf och natur längs västkusten – och ibland svartvit film som jag framkallar själv i ett enkelt mörkrum. Jag cyklar och surfar också gärna.</p>
+          <h3>Fråga gärna om bilder till</h3>
+          <ul class="ticks">
+            <li>Porträtt</li>
+            <li>Dokumentation av maskiner och produktion</li>
+            <li>Produktbilder</li>
+            <li>Miljö- och arbetsplatsbilder</li>
+            <li>Landskap och natur</li>
+          </ul>
+          <p><a class="textlink" href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" rel="noopener">Se fler bilder i fotoalbumet</a></p>
+          <p class="small">Fotograferingen är en hobby – inte en yrkesverksamhet.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">© <span id="year"></span> Martin Björck · Helsingborg</div>
+  <!-- Kontakt -->
+  <footer id="kontakt" class="contact">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <h2>Hör av dig</h2>
+          <p>Har du ett jobb, en fråga eller vill veta mer? Ring eller mejla så svarar jag.</p>
+          <a class="big" href="mailto:martinbjk@gmail.com?subject=Kontakt%20via%20hemsidan">martinbjk@gmail.com</a>
+          <a class="big tel" href="tel:+46708977190">070-897 71 90</a>
+        </div>
+        <div>
+          <div class="buttons">
+            <a class="btn btn-solid" href="files/martin-bjorck-cv.pdf" download>Ladda ner CV</a>
+            <a class="btn btn-line" href="https://www.linkedin.com/in/martin-björck-b0365312a" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="social">
+            <a href="https://www.instagram.com/martinbjorck/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.youtube.com/@martinSWE" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://photos.app.goo.gl/yRK7uGzKSt9YLdei6" target="_blank" rel="noopener">Fotoalbum</a>
+          </div>
+        </div>
+      </div>
+      <div class="offer">
+        <span>© <span id="year"></span> Martin Björck, Helsingborg</span>
+        <span>Vill du ha en liknande hemsida? <a href="mailto:martinbjk@gmail.com?subject=Intresse%20f%C3%B6r%20hemsida">Hör av dig</a></span>
+      </div>
+    </div>
+    <div class="strip" aria-hidden="true">
+      <span class="c"></span><span class="m"></span><span class="y"></span><span class="c50"></span><span class="m50"></span><span class="y50"></span><span class="c"></span><span class="m"></span><span class="y"></span>
+    </div>
   </footer>
 
   <!-- Lightbox -->
@@ -365,36 +462,25 @@ footer{border-top:1px solid var(--line);padding:28px 0;font-size:14px;color:var(
   </div>
 
   <script>
-    // Årtal i sidfoten
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightbox – klicka på bild för att förstora, klicka/Esc för att stänga
+    // Färgremsan "trycks" fram en gång när sidan laddas
+    document.querySelectorAll('.strip-load span').forEach(function(s, i){ s.style.animationDelay = (i * 0.04) + 's'; });
+
+    // Lightbox – klicka för att förstora, klicka eller Esc för att stänga
     (function(){
-      var box = document.getElementById('lightbox');
-      var img = document.getElementById('lbImg');
-      var cap = document.getElementById('lbCap');
+      var box = document.getElementById('lightbox'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
       function close(){ box.classList.remove('open'); img.src = ''; }
       document.querySelectorAll('.lb').forEach(function(link){
         link.addEventListener('click', function(e){
           e.preventDefault();
-          img.src = link.href;
-          img.alt = link.querySelector('img').alt;
+          img.src = link.href; img.alt = link.querySelector('img').alt;
           cap.textContent = link.dataset.caption || '';
           box.classList.add('open');
         });
       });
       box.addEventListener('click', close);
       document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-    })();
-
-    // Mjuk inglidning när sektioner syns
-    (function(){
-      var items = document.querySelectorAll('.reveal');
-      if(!('IntersectionObserver' in window)){ items.forEach(function(el){ el.classList.add('visible'); }); return; }
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); } });
-      }, {threshold:0.12});
-      items.forEach(function(el){ io.observe(el); });
     })();
   </script>
 </body>
