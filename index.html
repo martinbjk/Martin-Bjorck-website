@@ -121,12 +121,14 @@ h3{font-weight:700;font-stretch:105%;font-size:20px;margin:0 0 8px;line-height:1
 .how li:last-child{border-bottom:0}
 .how li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:10px;background:var(--c)}
 .projects{border-top:3px solid var(--ink)}
-.project{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) auto;gap:16px 40px;align-items:baseline;padding:26px 0;border-bottom:1px solid #c9cdd0}
+.project{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) 8.5rem;gap:16px 40px;align-items:baseline;padding:26px 0;border-bottom:1px solid #c9cdd0}
 .project h3{font-size:22px;margin:0}
 .project p{margin:0}
 .project .tech{display:block;font-size:14px;color:var(--grey);margin-top:6px}
 .project .open{font-weight:600;white-space:nowrap;text-decoration:underline;text-decoration-color:var(--m);text-decoration-thickness:2px;text-underline-offset:4px}
 .project .links{display:flex;gap:16px;white-space:nowrap}
+.project>.open,.project>.links,.project>.status{justify-self:end}
+@media (max-width:760px){.project>.open,.project>.links,.project>.status{justify-self:start}}
 .project .status{font-size:14px;color:var(--grey);white-space:nowrap}
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 0;padding:0;list-style:none}
 .tools li{background:var(--paper);border:1px solid var(--rule);padding:6px 12px;font-size:14px;border-radius:2px}
